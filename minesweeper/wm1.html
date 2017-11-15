@@ -745,7 +745,7 @@ maxminesverify();
 }
 
 
-numofall=gridx*gridy;
+
 function accepted(){
 var squaresleft, flagsleft;
 var elapsedtime;
@@ -814,7 +814,7 @@ mines[y][x] = true;
 }
 
 // initialize game variables
-squaresleft = gridy * gridx;
+squaresleft = (gridy * gridx);
 flagsleft = maxmines;
 elapsedtime = 0;
 playing = true;
@@ -1148,6 +1148,7 @@ var change = true;
 if (s == 1) {
 flagsleft++;
 squaresleft++;
+   
 }
 if (flagsleft == 0 && s == 0) {
 change = false;
@@ -1158,6 +1159,7 @@ else s++;
 if (s == 1) {
 flagsleft--;
 squaresleft--;
+   
    }
 }
 if (change) {
@@ -1165,11 +1167,12 @@ shown[y][x] = s;
 document.images["grd"+y+"_"+x].src = dir + "sqt"+s+".gif";
 setStatus();
 }
-if (squaresleft == 0 && flagsleft==0) {
+if (squaresleft == 1) {
 document.images.condition.src = dir + "btncool.gif";
 playing = false;
-    var wname=window.prompt("Please enter your name :","");
-window.location = "winner.php?time=".elapsedtime"&wname=".wname;
+    alert("victory your score".elapsedtime);
+       
+
       }
    }
 }
@@ -1180,6 +1183,7 @@ if (mines[y][x]) {
 document.images["grd"+y+"_"+x].src = dir + "minered.gif";
 dead();
 }
+  
 else  {
 rollback(y,x);
          }
